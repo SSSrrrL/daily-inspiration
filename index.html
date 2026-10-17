@@ -1,13 +1,23 @@
-<div id="inspiration">
-<div class="label">✦ DAILY INSPIRATION</div>
-<div id="quote"></div>
-<div id="source"></div>
-</div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Daily Inspiration</title>
 
 <style>
-body {
+* {
+box-sizing: border-box;
+}
+
+html, body {
 margin: 0;
+padding: 0;
 background: #EAF2F8;
+}
+
+body {
 font-family: Georgia, serif;
 }
 
@@ -15,53 +25,227 @@ font-family: Georgia, serif;
 background: #EAF2F8;
 color: #243B53;
 text-align: center;
-padding: 30px 24px;
-border-radius: 12px;
+padding: 25px 30px;
+min-height: 170px;
+display: flex;
+flex-direction: column;
+justify-content: center;
 }
 
 .label {
-font: 11px Arial, sans-serif;
+font-family: Arial, sans-serif;
+font-size: 11px;
 letter-spacing: 3px;
-margin-bottom: 22px;
+font-weight: bold;
+margin-bottom: 18px;
 }
 
 #quote {
-font-size: 21px;
-line-height: 1.6;
-font-style: italic;
+font-size: 19px;
+line-height: 1.5;
 }
 
 #source {
-font: 12px Arial, sans-serif;
-margin-top: 20px;
+font-family: Arial, sans-serif;
+font-size: 11px;
+margin-top: 15px;
 opacity: 0.75;
 }
+
 </style>
+</head>
+
+<body>
+
+<div id="inspiration">
+<div class="label">✦ DAILY INSPIRATION</div>
+<div id="quote"></div>
+<div id="source"></div>
+</div>
 
 <script>
+
 const quotes = [
+
 {
 text: "Indeed, with hardship comes ease.",
 source: "Quran · 94:6"
 },
+
 {
 text: "The most beloved deeds to Allah are those done consistently, even if they are few.",
 source: "Sahih al-Bukhari · 6464"
 },
+
 {
 text: "You do not rise to the level of your goals. You fall to the level of your systems.",
 source: "James Clear · Atomic Habits"
 },
+
 {
 text: "Allah does not burden a soul beyond what it can bear.",
 source: "Quran · 2:286"
 },
+
 {
 text: "Actions are judged by intentions.",
 source: "Sahih al-Bukhari · 1"
 },
+
 {
 text: "It is not that we have a short time to live, but that we waste a lot of it.",
 source: "Seneca · On the Shortness of Life"
+},
+
+{
+text: "Allah is with the patient.",
+source: "Quran · 2:153"
+},
+
+{
+text: "The strong person is not the one who overcomes others by strength, but the one who controls himself while in anger.",
+source: "Sahih al-Bukhari · 6114"
+},
+
+{
+text: "We are what we repeatedly do.",
+source: "Will Durant · The Story of Philosophy"
+},
+
+{
+text: "And whoever puts their trust in Allah, then He is sufficient for them.",
+source: "Quran · 65:3"
+},
+
+{
+text: "The best among you are those who have the best manners and character.",
+source: "Sahih al-Bukhari · 3559"
+},
+
+{
+text: "The secret of getting ahead is getting started.",
+source: "Mark Twain (commonly attributed)"
+},
+
+{
+text: "So remember Me; I will remember you.",
+source: "Quran · 2:152"
+},
+
+{
+text: "Make things easy and do not make things difficult.",
+source: "Sahih al-Bukhari · 69"
+},
+
+{
+text: "It always seems impossible until it is done.",
+source: "Common motivational saying"
+},
+
+{
+text: "And He found you lost and guided you.",
+source: "Quran · 93:7"
+},
+
+{
+text: "None of you truly believes until he loves for his brother what he loves for himself.",
+source: "Sahih al-Bukhari · 13"
+},
+
+{
+text: "Small disciplines repeated with consistency every day lead to great achievements gained slowly over time.",
+source: "John C. Maxwell"
+},
+
+{
+text: "Indeed, Allah does not change the condition of a people until they change what is in themselves.",
+source: "Quran · 13:11"
+},
+
+{
+text: "Whoever believes in Allah and the Last Day should speak good or remain silent.",
+source: "Sahih al-Bukhari · 6018"
+},
+
+{
+text: "The future depends on what you do today.",
+source: "Common motivational saying"
+},
+
+{
+text: "And be patient, for indeed Allah does not allow the reward of those who do good to be lost.",
+source: "Quran · 11:115"
+},
+
+{
+text: "A good word is charity.",
+source: "Sahih al-Bukhari · 2989"
+},
+
+{
+text: "Success is the product of daily habits—not once-in-a-lifetime transformations.",
+source: "James Clear · Atomic Habits"
+},
+
+{
+text: "And whoever is grateful, their gratitude is only for the benefit of themselves.",
+source: "Quran · 31:12"
+},
+
+{
+text: "The best of you are those who learn the Quran and teach it.",
+source: "Sahih al-Bukhari · 5027"
+},
+
+{
+text: "You have power over your mind—not outside events.",
+source: "Marcus Aurelius · Meditations (paraphrase)"
+},
+
+{
+text: "Indeed, Allah loves those who rely upon Him.",
+source: "Quran · 3:159"
+},
+
+{
+text: "Smiling in the face of your brother is charity.",
+source: "Jami at-Tirmidhi · 1956"
+},
+
+{
+text: "The journey of a thousand miles begins with a single step.",
+source: "Lao Tzu · Tao Te Ching"
 }
+
 ];
+
+function showDailyQuote() {
+
+const now = new Date();
+
+const startOfYear = new Date(
+now.getFullYear(),
+0,
+1
+);
+
+const dayNumber = Math.floor(
+(now - startOfYear) / 86400000
+);
+
+const selected = quotes[dayNumber % quotes.length];
+
+document.getElementById("quote").textContent =
+"“" + selected.text + "”";
+
+document.getElementById("source").textContent =
+selected.source;
+
+}
+
+showDailyQuote();
+
+</script>
+
+</body>
+</html>
