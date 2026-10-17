@@ -3,10 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Daily Inspiration</title>
 
 <style>
+:root {
+--background: #D8E2EC;
+--text: #243B53;
+--accent: #536B82;
+}
+
 * {
 box-sizing: border-box;
 }
@@ -14,69 +19,94 @@ box-sizing: border-box;
 html, body {
 margin: 0;
 padding: 0;
-background: #EAF2F8;
+width: 100%;
+background: var(--background);
 }
 
 body {
-font-family: Georgia, serif;
+font-family: Georgia, "Times New Roman", serif;
 }
 
 #inspiration {
-background: #EAF2F8;
-color: #243B53;
-text-align: center;
-padding: 25px 30px;
-min-height: 170px;
+width: 100%;
+min-height: 155px;
+padding: 24px 36px;
+background: var(--background);
+color: var(--text);
+
 display: flex;
 flex-direction: column;
 justify-content: center;
+align-items: center;
+
+text-align: center;
 }
 
 .label {
 font-family: Arial, sans-serif;
-font-size: 11px;
+font-size: 10px;
+font-weight: 600;
 letter-spacing: 3px;
-font-weight: bold;
-margin-bottom: 18px;
+text-transform: uppercase;
+color: var(--accent);
+margin-bottom: 16px;
 }
 
 #quote {
-font-size: 19px;
-line-height: 1.5;
+max-width: 850px;
+font-size: clamp(16px, 2.3vw, 21px);
+line-height: 1.55;
+font-weight: normal;
+color: var(--text);
 }
 
 #source {
 font-family: Arial, sans-serif;
 font-size: 11px;
-margin-top: 15px;
-opacity: 0.75;
+letter-spacing: 0.5px;
+color: var(--accent);
+margin-top: 14px;
 }
 
+@media (max-width: 600px) {
+#inspiration {
+padding: 22px 20px;
+min-height: 170px;
+}
+
+.label {
+font-size: 9px;
+letter-spacing: 2px;
+}
+
+#quote {
+font-size: 17px;
+}
+}
 </style>
 </head>
 
 <body>
 
-<div id="inspiration">
-<div class="label">✦ DAILY INSPIRATION</div>
-<div id="quote"></div>
+<section id="inspiration">
+<div class="label">✦ Daily Inspiration</div>
+<div id="quote">Loading today's inspiration...</div>
 <div id="source"></div>
-</div>
+</section>
 
 <script>
-
 const quotes = [
+
+// QURAN → HADITH → SELF-HELP
 
 {
 text: "Indeed, with hardship comes ease.",
 source: "Quran · 94:6"
 },
-
 {
 text: "The most beloved deeds to Allah are those done consistently, even if they are few.",
 source: "Sahih al-Bukhari · 6464"
 },
-
 {
 text: "You do not rise to the level of your goals. You fall to the level of your systems.",
 source: "James Clear · Atomic Habits"
@@ -86,27 +116,23 @@ source: "James Clear · Atomic Habits"
 text: "Allah does not burden a soul beyond what it can bear.",
 source: "Quran · 2:286"
 },
-
 {
 text: "Actions are judged by intentions.",
 source: "Sahih al-Bukhari · 1"
 },
-
 {
 text: "It is not that we have a short time to live, but that we waste a lot of it.",
 source: "Seneca · On the Shortness of Life"
 },
 
 {
-text: "Allah is with the patient.",
+text: "Indeed, Allah is with the patient.",
 source: "Quran · 2:153"
 },
-
 {
-text: "The strong person is not the one who overcomes others by strength, but the one who controls himself while in anger.",
+text: "The strong person is the one who controls himself when angry.",
 source: "Sahih al-Bukhari · 6114"
 },
-
 {
 text: "We are what we repeatedly do.",
 source: "Will Durant · The Story of Philosophy"
@@ -116,42 +142,36 @@ source: "Will Durant · The Story of Philosophy"
 text: "And whoever puts their trust in Allah, then He is sufficient for them.",
 source: "Quran · 65:3"
 },
-
 {
 text: "The best among you are those who have the best manners and character.",
 source: "Sahih al-Bukhari · 3559"
 },
-
 {
-text: "The secret of getting ahead is getting started.",
-source: "Mark Twain (commonly attributed)"
+text: "Every action you take is a vote for the type of person you wish to become.",
+source: "James Clear · Atomic Habits"
 },
 
 {
 text: "So remember Me; I will remember you.",
 source: "Quran · 2:152"
 },
-
 {
 text: "Make things easy and do not make things difficult.",
 source: "Sahih al-Bukhari · 69"
 },
-
 {
-text: "It always seems impossible until it is done.",
-source: "Common motivational saying"
+text: "The impediment to action advances action. What stands in the way becomes the way.",
+source: "Marcus Aurelius · Meditations"
 },
 
 {
 text: "And He found you lost and guided you.",
 source: "Quran · 93:7"
 },
-
 {
 text: "None of you truly believes until he loves for his brother what he loves for himself.",
 source: "Sahih al-Bukhari · 13"
 },
-
 {
 text: "Small disciplines repeated with consistency every day lead to great achievements gained slowly over time.",
 source: "John C. Maxwell"
@@ -161,42 +181,36 @@ source: "John C. Maxwell"
 text: "Indeed, Allah does not change the condition of a people until they change what is in themselves.",
 source: "Quran · 13:11"
 },
-
 {
 text: "Whoever believes in Allah and the Last Day should speak good or remain silent.",
 source: "Sahih al-Bukhari · 6018"
 },
-
-{
-text: "The future depends on what you do today.",
-source: "Common motivational saying"
-},
-
-{
-text: "And be patient, for indeed Allah does not allow the reward of those who do good to be lost.",
-source: "Quran · 11:115"
-},
-
-{
-text: "A good word is charity.",
-source: "Sahih al-Bukhari · 2989"
-},
-
 {
 text: "Success is the product of daily habits—not once-in-a-lifetime transformations.",
 source: "James Clear · Atomic Habits"
 },
 
 {
+text: "And be patient, for indeed Allah does not allow the reward of those who do good to be lost.",
+source: "Quran · 11:115"
+},
+{
+text: "A good word is charity.",
+source: "Sahih al-Bukhari · 2989"
+},
+{
+text: "The more you know yourself, the more patience you have for what you see in others.",
+source: "Erik Erikson"
+},
+
+{
 text: "And whoever is grateful, their gratitude is only for the benefit of themselves.",
 source: "Quran · 31:12"
 },
-
 {
 text: "The best of you are those who learn the Quran and teach it.",
 source: "Sahih al-Bukhari · 5027"
 },
-
 {
 text: "You have power over your mind—not outside events.",
 source: "Marcus Aurelius · Meditations (paraphrase)"
@@ -206,12 +220,10 @@ source: "Marcus Aurelius · Meditations (paraphrase)"
 text: "Indeed, Allah loves those who rely upon Him.",
 source: "Quran · 3:159"
 },
-
 {
 text: "Smiling in the face of your brother is charity.",
 source: "Jami at-Tirmidhi · 1956"
 },
-
 {
 text: "The journey of a thousand miles begins with a single step.",
 source: "Lao Tzu · Tao Te Ching"
@@ -220,17 +232,15 @@ source: "Lao Tzu · Tao Te Ching"
 ];
 
 function showDailyQuote() {
-
 const now = new Date();
 
-const startOfYear = new Date(
-now.getFullYear(),
-0,
-1
-);
-
+// Calendar-day calculation avoids daylight-saving issues.
 const dayNumber = Math.floor(
-(now - startOfYear) / 86400000
+Date.UTC(
+now.getFullYear(),
+now.getMonth(),
+now.getDate()
+) / 86400000
 );
 
 const selected = quotes[dayNumber % quotes.length];
@@ -240,11 +250,13 @@ document.getElementById("quote").textContent =
 
 document.getElementById("source").textContent =
 selected.source;
-
 }
 
 showDailyQuote();
 
+// Check periodically so the quote changes after midnight
+// even if Notion remains open.
+setInterval(showDailyQuote, 60000);
 </script>
 
 </body>
